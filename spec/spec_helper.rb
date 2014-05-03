@@ -8,6 +8,13 @@ require 'rspec/autorun'
 # in spec/support/ and its subdirectories.
 Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
+Capybara.configure do |config|
+config.match = :prefer_exact
+config.ignore_hidden_elements = false
+end
+
+
+
 RSpec.configure do |config|
   # ## Mock Framework
   #
@@ -35,4 +42,5 @@ RSpec.configure do |config|
   # the seed, which is printed after each run.
   #     --seed 1234
   config.order = "random"
+  config.include Capybara::DSL
 end
